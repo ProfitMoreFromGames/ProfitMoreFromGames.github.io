@@ -1,0 +1,191 @@
+<html>
+  <head>
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #020202;
+  color:#f0f0f0;
+
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: black;
+  color:black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: black;
+  color:#f0f0f0;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #222222;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+h1,h2,h3,h4,h5 {
+  background-color: black;
+  color:#f0f0f0;
+}
+th {border:1px solid black}
+td {border:1px solid grey}
+.center {text-align:center}
+input {padding:3px 5px 3px 5px; width:100px;background:black;color:#0f0f0f;border:1px solid grey}
+a{color:gold}
+a:hover{color:orange}
+</style>
+  </head>
+  <body>
+<div class="header">
+  <h2>Profit More From Games</h2>
+</div>
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+		<h2 class=center>How to price your games (Not only on steam)</h2>
+		<p>
+			Calculate your price: <input id="yourDollarValue"/>
+		</p>
+		<table class="table" cellspacing=0>
+			<thead>
+				<tr>
+					<th style="width:220px" class="sort-header" role="columnheader" tabindex="0">Currency</th>
+					<th style="width:220px">Converted 1$ worth</th>
+					<th style="width:220px">Percentage</th>
+					<th style="width:220px">Calculated</th>
+				</tr>
+			</thead>
+			<tbody id="Convertion_table">
+			</tbody>
+		</table>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+		Price differences were taken from game called Hearthbound which creator make sure to accomodate for countries currency power.<br>
+		The Price shown is how much 1$ should be converted to.<br>
+		<a href="https://steamdb.info/app/567380/">Hearthbound on Steam DB</a><br>
+		<a href="https://www.twitch.tv/piratesoftware">Thor (game creator stream link)</a><br>
+    </div>
+  </div>
+</div>
+
+	<div class="footer">
+	</div>
+	<script>
+		var price_table = [
+			{ currency:"U.S. Dollar",		percentDif:0.0},
+			{ currency:"Brazilian Real",	percentDif:-0.6351},
+			{ currency:"Russian Ruble",		percentDif:-0.5782},
+			{ currency:"Ukrainian Hryvnia",	percentDif:-0.4544},
+			{ currency:"South Asia - USD",	percentDif:-0.4505},
+			{ currency:"South African Rand",percentDif:-0.4348},
+			{ currency:"Vietnamese Dong",	percentDif:-0.4309},
+			{ currency:"Indian Rupee",		percentDif:-0.4267},
+			{ currency:"LATAM - U.S. Dollar",percentDif:-0.4204},
+			{ currency:"MENA - U.S. Dollar",percentDif:-0.4204},
+			{ currency:"Chinese Yuan",		percentDif:-0.4098},
+			{ currency:"Indonesian Rupiah",	percentDif:-0.4086},
+			{ currency:"Taiwan Dollar",		percentDif:-0.4085},
+			{ currency:"Philippine Peso",	percentDif:-0.4040},
+			{ currency:"Saudi Riyal",		percentDif:-0.4000},
+			{ currency:"Kazakhstani Tenge",	percentDif:-0.3946},
+			{ currency:"Malaysian Ringgit",	percentDif:-0.3878},
+			{ currency:"Peruvian Sol",		percentDif:-0.3804},
+			{ currency:"New Zealand Dollar",percentDif:-0.3758},
+			{ currency:"CIS - U.S. Dollar",	percentDif:-0.3704},
+			{ currency:"Chilean Peso",		percentDif:-0.3690},
+			{ currency:"Kuwaiti Dinar",		percentDif:-0.3600},
+			{ currency:"Colombian Peso",	percentDif:-0.3550},
+			{ currency:"Mexican Peso",		percentDif:-0.3505},
+			{ currency:"Thai Baht",			percentDif:-0.3498},
+			{ currency:"Australian Dollar",	percentDif:-0.3196},
+			{ currency:"Qatari Riyal",		percentDif:-0.3085},
+			{ currency:"Uruguayan Peso",	percentDif:-0.2313},
+			{ currency:"Singapore Dollar",	percentDif:-0.2302},
+			{ currency:"U.A.E. Dirham",		percentDif:-0.2096},
+			{ currency:"South Korean Won",	percentDif:-0.1689},
+			{ currency:"Japanese Yen",		percentDif:-0.1679},
+			{ currency:"Hong Kong Dollar",	percentDif:-0.1526},
+			{ currency:"Costa Rican Colon",	percentDif:-0.1178},
+			{ currency:"Polish Zloty",		percentDif:-0.0793},
+			{ currency:"Canadian Dollar",	percentDif:-0.0375},
+			{ currency:"Israeli New Shekel",percentDif:0.0024},
+			{ currency:"Norwegian Krone",	percentDif:0.0506},
+			{ currency:"Euro",				percentDif:0.0924},
+			{ currency:"British Pound",		percentDif:0.1246},
+			{ currency:"Swiss Franc",		percentDif:0.2978},
+		]
+		var tableOfPrices = document.getElementById("Convertion_table");
+		let inputValue = document.getElementById("yourDollarValue");
+		inputValue.onkeyup = function()
+		{
+			let value = inputValue.value;
+			console.log(inputValue);
+			if(value > 0)
+			{
+				console.log(inputValue.value);
+				for(let rowID in price_table)
+				{
+					tableOfPrices.children[rowID].children[3].innerHTML = ((1 + price_table[rowID].percentDif) * value).toFixed(2) + "$"
+				}
+			}
+		};
+		for(let row of price_table)
+		{
+			tableOfPrices.innerHTML += "<tr><td align=center><b>"+(row.currency)+"</b></td><td align=center>"+(1 + row.percentDif).toFixed(2)+"$</td><td align=center>"+((row.percentDif > 0)?"+":"") + (row.percentDif * 100).toFixed(2)+"%</td><td align=center>-</td></tr>";
+		}
+	</script>
+  </body>
+</html>
