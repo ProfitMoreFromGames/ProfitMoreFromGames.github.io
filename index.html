@@ -1,191 +1,205 @@
 <html>
-  <head>
-<style>
+<head>
+	<title>Profit More From Games</title>
+	<style>
+	* {
+	  box-sizing: border-box;
+	}
 
-* {
-  box-sizing: border-box;
-}
+	body {
+	  font-family: Arial;
+	  padding: 20px;
+	  background: #020202;
+	  color:#f0f0f0;
 
-body {
-  font-family: Arial;
-  padding: 20px;
-  background: #020202;
-  color:#f0f0f0;
+	}
 
-}
+	/* Header/Blog Title */
+	.header {
+	  padding: 30px;
+	  font-size: 40px;
+	  text-align: center;
+	  background: black;
+	  color:black;
+	}
 
-/* Header/Blog Title */
-.header {
-  padding: 30px;
-  font-size: 40px;
-  text-align: center;
-  background: black;
-  color:black;
-}
+	/* Create two unequal columns that floats next to each other */
+	/* Left column */
+	.leftcolumn {
+	  float: left;
+	  width: 75%;
+	}
 
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftcolumn {
-  float: left;
-  width: 75%;
-}
+	/* Right column */
+	.rightcolumn {
+	  float: left;
+	  width: 25%;
+	  padding-left: 20px;
+	}
 
-/* Right column */
-.rightcolumn {
-  float: left;
-  width: 25%;
-  padding-left: 20px;
-}
+	/* Fake image */
+	.fakeimg {
+	  background-color: #aaa;
+	  width: 100%;
+	  padding: 20px;
+	}
 
-/* Fake image */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-}
+	/* Add a card effect for articles */
+	.card {
+	  background-color: black;
+	  color:#f0f0f0;
+	  padding: 20px;
+	  margin-top: 20px;
+	}
 
-/* Add a card effect for articles */
-.card {
-  background-color: black;
-  color:#f0f0f0;
-  padding: 20px;
-  margin-top: 20px;
-}
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+	/* Footer */
+	.footer {
+	  padding: 20px;
+	  text-align: center;
+	  background: #222222;
+	  margin-top: 20px;
+	}
 
-/* Footer */
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: #222222;
-  margin-top: 20px;
-}
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) {
-  .leftcolumn, .rightcolumn {
-    width: 100%;
-    padding: 0;
-  }
-}
-h1,h2,h3,h4,h5 {
-  background-color: black;
-  color:#f0f0f0;
-}
-th {border:1px solid black}
-td {border:1px solid grey}
-.center {text-align:center}
-input {padding:3px 5px 3px 5px; width:100px;background:black;color:grey;border:1px solid grey}
-a{color:gold}
-a:hover{color:orange}
-</style>
-  </head>
-  <body>
-<div class="header">
-  <h2>Profit More From Games</h2>
-</div>
-<div class="row">
-  <div class="leftcolumn">
-    <div class="card">
-		<h2 class=center>How to price your games (Not only on steam)</h2>
-		<p>
-			Calculate your price: <input id="yourDollarValue"/>
-		</p>
-		<table class="table" cellspacing=0>
-			<thead>
-				<tr>
-					<th style="width:220px" class="sort-header" role="columnheader" tabindex="0">Currency</th>
-					<th style="width:220px">Converted 1$ worth</th>
-					<th style="width:220px">Percentage</th>
-					<th style="width:220px">Calculated</th>
-				</tr>
-			</thead>
-			<tbody id="Convertion_table">
-			</tbody>
-		</table>
-    </div>
-  </div>
-  <div class="rightcolumn">
-    <div class="card">
-		Price differences were taken from game called Hearthbound which creator make sure to accomodate for countries currency power.<br>
-		The Price shown is how much 1$ should be converted to.<br>
-		<a href="https://steamdb.info/app/567380/">Hearthbound on Steam DB</a><br>
-		<a href="https://www.twitch.tv/piratesoftware">Thor (game creator stream link)</a><br>
-    </div>
-  </div>
-</div>
+	/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+	@media screen and (max-width: 800px) {
+	  .leftcolumn, .rightcolumn {
+		width: 100%;
+		padding: 0;
+	  }
+	}
+	h1,h2,h3,h4,h5 {
+	  background-color: black;
+	  color:#f0f0f0;
+	}
+	th {border:1px solid black}
+	td {border:1px solid grey}
+	.center {text-align:center}
+	input {padding:3px 5px 3px 5px; width:100px;background:black;color:grey;border:1px solid grey}
+	a{color:gold}
+	a:hover{color:orange}
+	</style>
+</head>
+<body>
+	<div class="header">
+	  <h2>Profit More From Games</h2>
+	</div>
+	<div class="row">
+	  <div class="leftcolumn">
+		<div class="card">
+			<h2 class=center>How to price your games (Not only on steam)</h2>
+			<p>
+				Legend:<br>
+				<ul>
+					<li>1$ Worth - how much 1$ should be worth for average civilian in that currency country. Looking at their Purchasing Power.</li>
+					<li>Percent Diff. - Difference between USD and purchasing power of the country</li>
+					<li>1$ Converted - Converted price to that currency accomodating "Percent Diff." column</li>
+				</ul>
+			</p>
+			<table class="table" cellspacing=0>
+				<thead>
+					<tr>
+						<th style="width:220px" class="sort-header" role="columnheader" tabindex="0">Currency</th>
+						<th style="width:220px">1$ Worth</th>
+						<th style="width:220px">Percent Diff.</th>
+						<th style="width:220px">1$ Converted</th>
+					</tr>
+				</thead>
+				<tbody id="Convertion_table">
+				</tbody>
+			</table>
+		</div>
+	  </div>
+	  <div class="rightcolumn">
+		<div class="card">
+			Price differences were taken from game called Hearthbound which creator make sure to accomodate for countries currency power.<br>
+			The Price shown is how much 1$ should be converted to.<br>
+			<a href="https://steamdb.info/app/567380/">Hearthbound on Steam DB</a><br>
+			<a href="https://www.twitch.tv/piratesoftware">Thor (game creator stream link)</a><br>
+		</div>
+	  </div>
+	</div>
 
 	<div class="footer">
 	</div>
 	<script>
 		var price_table = [
-			{ currency:"U.S. Dollar",		percentDif:0.0},
-			{ currency:"Brazilian Real",	percentDif:-0.6351},
-			{ currency:"Russian Ruble",		percentDif:-0.5782},
-			{ currency:"Ukrainian Hryvnia",	percentDif:-0.4544},
-			{ currency:"South Asia - USD",	percentDif:-0.4505},
-			{ currency:"South African Rand",percentDif:-0.4348},
-			{ currency:"Vietnamese Dong",	percentDif:-0.4309},
-			{ currency:"Indian Rupee",		percentDif:-0.4267},
-			{ currency:"LATAM - U.S. Dollar",percentDif:-0.4204},
-			{ currency:"MENA - U.S. Dollar",percentDif:-0.4204},
-			{ currency:"Chinese Yuan",		percentDif:-0.4098},
-			{ currency:"Indonesian Rupiah",	percentDif:-0.4086},
-			{ currency:"Taiwan Dollar",		percentDif:-0.4085},
-			{ currency:"Philippine Peso",	percentDif:-0.4040},
-			{ currency:"Saudi Riyal",		percentDif:-0.4000},
-			{ currency:"Kazakhstani Tenge",	percentDif:-0.3946},
-			{ currency:"Malaysian Ringgit",	percentDif:-0.3878},
-			{ currency:"Peruvian Sol",		percentDif:-0.3804},
-			{ currency:"New Zealand Dollar",percentDif:-0.3758},
-			{ currency:"CIS - U.S. Dollar",	percentDif:-0.3704},
-			{ currency:"Chilean Peso",		percentDif:-0.3690},
-			{ currency:"Kuwaiti Dinar",		percentDif:-0.3600},
-			{ currency:"Colombian Peso",	percentDif:-0.3550},
-			{ currency:"Mexican Peso",		percentDif:-0.3505},
-			{ currency:"Thai Baht",			percentDif:-0.3498},
-			{ currency:"Australian Dollar",	percentDif:-0.3196},
-			{ currency:"Qatari Riyal",		percentDif:-0.3085},
-			{ currency:"Uruguayan Peso",	percentDif:-0.2313},
-			{ currency:"Singapore Dollar",	percentDif:-0.2302},
-			{ currency:"U.A.E. Dirham",		percentDif:-0.2096},
-			{ currency:"South Korean Won",	percentDif:-0.1689},
-			{ currency:"Japanese Yen",		percentDif:-0.1679},
-			{ currency:"Hong Kong Dollar",	percentDif:-0.1526},
-			{ currency:"Costa Rican Colon",	percentDif:-0.1178},
-			{ currency:"Polish Zloty",		percentDif:-0.0793},
-			{ currency:"Canadian Dollar",	percentDif:-0.0375},
-			{ currency:"Israeli New Shekel",percentDif:0.0024},
-			{ currency:"Norwegian Krone",	percentDif:0.0506},
-			{ currency:"Euro",				percentDif:0.0924},
-			{ currency:"British Pound",		percentDif:0.1246},
-			{ currency:"Swiss Franc",		percentDif:0.2978},
-		]
+			{ code:"USD", currency:"U.S. Dollar",		percentDif:0.0, currRep:0},
+			{ code:"BRL", currency:"Brazilian Real",	percentDif:-0.6351, currRep:0},
+			{ code:"RUB", currency:"Russian Ruble",		percentDif:-0.5782, currRep:0},
+			{ code:"UAH", currency:"Ukrainian Hryvnia",	percentDif:-0.4544, currRep:0},
+			{ code:"LCU", currency:"South Asia - USD",	percentDif:-0.4505, currRep:0},
+			{ code:"ZAR", currency:"South African Rand",percentDif:-0.4348, currRep:0},
+			{ code:"VND", currency:"Vietnamese Dong",	percentDif:-0.4309, currRep:0},
+			{ code:"INR", currency:"Indian Rupee",		percentDif:-0.4267, currRep:0},
+			{ code:"", 	  currency:"LATAM - U.S. Dollar",percentDif:-0.4204, currRep:0},
+			{ code:"", 	  currency:"MENA - U.S. Dollar",percentDif:-0.4204, currRep:100},
+			{ code:"CNY", currency:"Chinese Yuan",		percentDif:-0.4098, currRep:0},
+			{ code:"IDR", currency:"Indonesian Rupiah",	percentDif:-0.4086, currRep:0},
+			{ code:"TWD", currency:"Taiwan Dollar",		percentDif:-0.4085, currRep:0},
+			{ code:"PHP", currency:"Philippine Peso",	percentDif:-0.4040, currRep:0},
+			{ code:"SAR", currency:"Saudi Riyal",		percentDif:-0.4000, currRep:0},
+			{ code:"KZT", currency:"Kazakhstani Tenge",	percentDif:-0.3946, currRep:0},
+			{ code:"MYR", currency:"Malaysian Ringgit",	percentDif:-0.3878, currRep:0},
+			{ code:"PEN", currency:"Peruvian Sol",		percentDif:-0.3804, currRep:0},
+			{ code:"NZD", currency:"New Zealand Dollar",percentDif:-0.3758, currRep:0},
+			{ code:"", 	  currency:"CIS - U.S. Dollar",	percentDif:-0.3704, currRep:0},
+			{ code:"CLP", currency:"Chilean Peso",		percentDif:-0.3690, currRep:0},
+			{ code:"KWD", currency:"Kuwaiti Dinar",		percentDif:-0.3600, currRep:0},
+			{ code:"COP", currency:"Colombian Peso",	percentDif:-0.3550, currRep:0},
+			{ code:"MXN", currency:"Mexican Peso",		percentDif:-0.3505, currRep:0},
+			{ code:"THB", currency:"Thai Baht",			percentDif:-0.3498, currRep:0},
+			{ code:"AUD", currency:"Australian Dollar",	percentDif:-0.3196, currRep:0},
+			{ code:"QAR", currency:"Qatari Riyal",		percentDif:-0.3085, currRep:0},
+			{ code:"UYU", currency:"Uruguayan Peso",	percentDif:-0.2313, currRep:0},
+			{ code:"SGD", currency:"Singapore Dollar",	percentDif:-0.2302, currRep:0},
+			{ code:"AED", currency:"U.A.E. Dirham",		percentDif:-0.2096, currRep:0},
+			{ code:"KRW", currency:"South Korean Won",	percentDif:-0.1689, currRep:0},
+			{ code:"JPY", currency:"Japanese Yen",		percentDif:-0.1679, currRep:0},
+			{ code:"HKD", currency:"Hong Kong Dollar",	percentDif:-0.1526, currRep:0},
+			{ code:"CRC", currency:"Costa Rican Colon",	percentDif:-0.1178, currRep:0},
+			{ code:"PLN", currency:"Polish Zloty",		percentDif:-0.0793, currRep:0},
+			{ code:"CAD", currency:"Canadian Dollar",	percentDif:-0.0375, currRep:0},
+			{ code:"ILS", currency:"Israeli New Shekel",percentDif:0.0024, currRep:0},
+			{ code:"NOK", currency:"Norwegian Krone",	percentDif:0.0506, currRep:0},
+			{ code:"EUR", currency:"Euro",				percentDif:0.0924, currRep:0},
+			{ code:"GBP", currency:"British Pound",		percentDif:0.1246, currRep:0},
+			{ code:"CHF", currency:"Swiss Franc",		percentDif:0.2978, currRep:0},
+		];
+		
+		const api = "https://api.exchangerate-api.com/v4/latest/USD";
 		var tableOfPrices = document.getElementById("Convertion_table");
-		let inputValue = document.getElementById("yourDollarValue");
-		inputValue.onkeyup = function()
-		{
-			let value = inputValue.value;
-			console.log(inputValue);
-			if(value > 0)
-			{
-				console.log(inputValue.value);
-				for(let rowID in price_table)
-				{
-					tableOfPrices.children[rowID].children[3].innerHTML = ((1 + price_table[rowID].percentDif) * value).toFixed(2) + "$"
-				}
-			}
-		};
 		for(let row of price_table)
 		{
 			tableOfPrices.innerHTML += "<tr><td align=center><b>"+(row.currency)+"</b></td><td align=center>"+(1 + row.percentDif).toFixed(2)+"$</td><td align=center>"+((row.percentDif > 0)?"+":"") + (row.percentDif * 100).toFixed(2)+"%</td><td align=center>-</td></tr>";
 		}
+		fetch(`${api}`)
+			.then(currency => {
+				return currency.json();
+			}).then(displayResults);
+		function displayResults(currency) {
+			for(let rowId in price_table)
+			{
+				let data = price_table[rowId];
+				
+				if(data.code == "") continue;
+				
+				let foundConversion = currency.rates[data.code];
+				
+				if(typeof foundConversion == "undefined") foundConversion = "-";
+				else foundConversion = (foundConversion * (1 + data.percentDif)).toFixed(2) + " " + data.code;
+				
+				tableOfPrices.children[rowId].children[3].innerHTML = foundConversion;
+
+			}
+		}
+		
 	</script>
   </body>
 </html>
